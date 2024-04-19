@@ -12,7 +12,11 @@ const handler = (request: Request) => {
     createContext: function (
       opts: FetchCreateContextFnOptions,
     ): object | Promise<object> {
-      return {};
+      opts.resHeaders.append("Access-Control-Allow-Origin", "*");
+      opts.resHeaders.append("Access-Control-Request-Method", "*");
+      opts.resHeaders.append("Access-Control-Allow-Methods", "POST, GET");
+      opts.resHeaders.append("Access-Control-Allow-Headers", "*");
+      return opts;
     },
   });
 };
