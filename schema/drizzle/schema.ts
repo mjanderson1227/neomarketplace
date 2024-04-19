@@ -12,9 +12,9 @@ const userTypeEnum = pgEnum("account_type", ["administrator", "default"]);
 
 export const UserInformation = pgTable("user_information", {
   id: serial("user_id").primaryKey(),
-  first: text("user_fname"),
-  last: text("user_lname"),
-  phone: text("user_phone"),
+  firstName: text("user_fname"),
+  lastName: text("user_lname"),
+  phoneNumber: text("user_phone"),
   email: text("user_email").notNull(),
   password: text("user_password").notNull(),
   salt: text("user_password_salt").notNull(),
