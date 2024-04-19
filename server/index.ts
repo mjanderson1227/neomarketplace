@@ -28,6 +28,8 @@ export const appRouter = t.router({
       salt: salt,
       password: hashed,
     });
+
+    return "Data inserted successfully.";
   }),
 });
 
