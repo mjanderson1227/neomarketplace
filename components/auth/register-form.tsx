@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 
 export default function RegisterForm() {
-  const mut = trpc.userRegister.useMutation();
+  // const mut = trpc.userRegister.useMutation();
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -29,8 +29,17 @@ export default function RegisterForm() {
     },
   });
 
-  function handleSubmit(data: z.infer<typeof registerFormSchema>) {
-    mut.mutate(data);
+  async function handleSubmit(data: z.infer<typeof registerFormSchema>) {
+    try {
+      const response = await fetch("/api/test", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const content = await response.json();
+      console.log(content);
+    } catch (error) {
+      console.error("An error occurred while fetching the data.", error);
+    }
   }
 
   return (
@@ -156,11 +165,6 @@ export default function RegisterForm() {
             <Button type="submit" className="w-full">
               Register
             </Button>
-            {mut.error && (
-              <p className="text-sm absolute">
-                An error has occurred: {mut.error.message}
-              </p>
-            )}
           </form>
         </Form>
       </CardWrapper>

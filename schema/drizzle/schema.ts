@@ -8,7 +8,10 @@ import {
   pgEnum,
 } from "drizzle-orm/pg-core";
 
-const userTypeEnum = pgEnum("account_type", ["administrator", "default"]);
+export const userTypeEnum = pgEnum("account_type", [
+  "administrator",
+  "default",
+]);
 
 export const UserInformation = pgTable("user_information", {
   id: serial("user_id").primaryKey(),
