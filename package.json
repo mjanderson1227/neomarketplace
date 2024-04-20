@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.0.1",
     "@hookform/resolvers": "^3.3.4",
     "@neondatabase/serverless": "^0.9.1",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -20,6 +21,7 @@
     "@trpc/next": "^11.0.0-rc.342",
     "@trpc/react-query": "^11.0.0-rc.342",
     "@trpc/server": "^11.0.0-rc.342",
+    "@uploadthing/react": "^6.4.4",
     "@vercel/postgres": "^0.8.0",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
@@ -34,6 +36,8 @@
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^6.9.0",
+    "vaul": "^0.9.0",
     "zod": "^3.22.5"
   },
   "devDependencies": {

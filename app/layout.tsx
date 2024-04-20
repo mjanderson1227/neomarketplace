@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { TrpcProvider } from "@/server/trpc-provider";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Roboto({ weight: "500", subsets: ["latin"] });
 
@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <TrpcProvider>{children}</TrpcProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="bg-utsablue">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
