@@ -6,7 +6,7 @@ import {
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import DrawerWrapper from "@/components/ui-extensions/drawer-wrapper";
+import CreatePostForm from "@/components/posts/create-post-form";
 
 const headerStyles: Record<string, string> = {
   white:
@@ -37,15 +37,13 @@ export default function Header() {
       <NavigationMenu className="text-xl flex items-center justify-center gap-16 flex-1 [&>a:hover]:text-orange-500">
         <NavigationMenuLink className="cursor-pointer">Home</NavigationMenuLink>
         <NavigationMenuLink className="cursor-pointer">
-          <DrawerWrapper
-            openPrompt="hello"
-            submitPrompt="submit"
-            title="Cool thing"
-            description="SOmethign very ckool"
-          ></DrawerWrapper>
+          <CreatePostForm />
         </NavigationMenuLink>
-        <NavigationMenuLink className="cursor-pointer">
-          Posts
+        <NavigationMenuLink
+          className="cursor-pointer"
+          href="/listings/dashboard"
+        >
+          Post Dashboard
         </NavigationMenuLink>
       </NavigationMenu>
       <div className="flex gap-8">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Header from "./header";
+import Header from "./_components/header";
 import { ReactElement } from "react";
 import shoppingPic from "@/public/shopping.svg";
 import cameraPic from "@/public/camera.svg";
@@ -62,7 +62,6 @@ function InfoBox() {
 export default function Home() {
   return (
     <>
-      <Header></Header>
       <div className="bg-utsablue w-[100%] max-w-[100%] box-border h-[100%] py-16">
         <div className="grid md:grid-cols-2 gap-8 w-[100%] items-center justify-center h-[100%]">
           <div className="max-w-[70%] flex gap-3 lg:gap-8 flex-col justify-self-center">

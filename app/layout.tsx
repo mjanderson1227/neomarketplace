@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Header from "./header";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Roboto({ weight: "500", subsets: ["latin"] });
 
@@ -18,7 +20,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className="bg-utsablue">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Header></Header>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </ClerkProvider>
   );

@@ -4,7 +4,6 @@ import {
   timestamp,
   pgTable,
   decimal,
-  boolean,
   pgEnum,
 } from "drizzle-orm/pg-core";
 
@@ -19,6 +18,6 @@ export const ItemListing = pgTable("item_listing", {
   author: text("listing_author").notNull(),
   description: text("listing_description").default("No Description"),
   price: decimal("listing_price").notNull(),
-  available: boolean("listing_availability").notNull().default(true),
   timestamp: timestamp("listing_timestamp").notNull().defaultNow(),
+  picture: text("listing_picture").notNull(),
 });
