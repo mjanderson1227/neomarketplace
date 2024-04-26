@@ -3,9 +3,11 @@ import { Roboto } from "next/font/google";
 import "@/src/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/src/components/ui/toaster";
-import Header from "./_components/header";
+import dynamic from "next/dynamic";
 
 const roboto = Roboto({ weight: "500", subsets: ["latin"] });
+
+const DynHeader = dynamic(() => import("./_components/header"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "UTSA Marketplace",
@@ -14,14 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  params: {
-    route: string;
-  };
-  children: React.ReactNode;
-  landing: React.ReactNode;
-  posts: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en" className="bg-utsablue">
@@ -29,7 +24,7 @@ export default function RootLayout({
           <title>{metadata.title as string}</title>
         </head>
         <body className={roboto.className}>
-          <Header title="Rowdy Marketplace"></Header>
+          <DynHeader title="UTSA Marketplace"></DynHeader>
           {children}
           <Toaster />
         </body>

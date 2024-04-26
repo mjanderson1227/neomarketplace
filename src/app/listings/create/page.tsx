@@ -33,6 +33,7 @@ export default function CreatePostForm() {
   });
 
   async function handleSubmit(data: z.infer<typeof createPostFormSchema>) {
+    console.log("Form Sent!");
     if (!session.user) {
       console.error("Not logged in");
       return;
@@ -41,10 +42,15 @@ export default function CreatePostForm() {
     try {
       await createPost(
         data.title,
-        session.user?.fullName || session.user?.emailAddresses[0].toString(),
+        session.user.id,
         data.price.toString(),
         data.description,
       );
+
+      toast({
+        title: "Post Creation Successful",
+        description: "Good Job...",
+      });
     } catch (error: any) {
       toast({
         title: "Uh oh! Something went wrong.",
@@ -118,6 +124,7 @@ export default function CreatePostForm() {
           <Button
             type="submit"
             className="w-full h-14 text-2xl bg-utsablue rounded-xl"
+            onClick={() => console.log("Button clicked")}
           >
             Create Listing
           </Button>

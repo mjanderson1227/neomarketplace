@@ -19,7 +19,7 @@ export default function CardWrapper({
   children,
 }: CardWrapperProps) {
   return (
-    <Card>
+    <Card className="h-full w-full">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
