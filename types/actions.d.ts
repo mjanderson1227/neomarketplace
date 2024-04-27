@@ -7,3 +7,5 @@ declare interface ListingRecordReturn {
   identifier: string;
   id: number;
 }
+
+declare type ListingData = ListingRecordReturn & { pictures: string[] };

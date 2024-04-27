@@ -38,6 +38,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "react-resizable-panels": "^2.0.18",
+    "server-only": "^0.0.1",
     "superjson": "^2.2.1",
     "svix": "^1.21.0",
     "tailwind-merge": "^2.2.2",

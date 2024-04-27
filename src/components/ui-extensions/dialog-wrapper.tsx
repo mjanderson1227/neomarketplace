@@ -7,6 +7,7 @@ import {
   DialogTrigger,
 } from "@/src/components/ui/dialog";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 interface DialogWrapperProps {
   title: string;
@@ -27,7 +28,13 @@ export default function DialogWrapper({
 }: DialogWrapperProps) {
   return (
     <Dialog>
-      <DialogTrigger>{openPrompt}</DialogTrigger>
+      <DialogTrigger
+        className="relative left-52 top-52"
+        type="button"
+        value={openPrompt}
+      >
+        {openPrompt}
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

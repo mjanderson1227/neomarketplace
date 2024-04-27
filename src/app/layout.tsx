@@ -3,6 +3,9 @@ import { Roboto } from "next/font/google";
 import "@/src/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/src/components/ui/toaster";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { appFileRouter } from "./api/uploadthing/core";
 import dynamic from "next/dynamic";
 
 const roboto = Roboto({ weight: "500", subsets: ["latin"] });
@@ -24,8 +27,9 @@ export default function RootLayout({
           <title>{metadata.title as string}</title>
         </head>
         <body className={roboto.className}>
+          <NextSSRPlugin routerConfig={extractRouterConfig(appFileRouter)} />
           <DynHeader title="UTSA Marketplace"></DynHeader>
-          {children}
+          <main className="overflow-y-scroll">{children}</main>
           <Toaster />
         </body>
       </html>

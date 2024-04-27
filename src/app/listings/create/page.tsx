@@ -12,7 +12,7 @@ import { Textarea } from "@/src/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { createPost } from "@/src/server/actions";
+import { createPost } from "@/src/server/queries";
 import { createPostFormSchema } from "@/src/schema/create-post-schema";
 import { useUser } from "@clerk/nextjs";
 import { useToast } from "@/src/components/ui/use-toast";
@@ -28,12 +28,11 @@ export default function CreatePostForm() {
     defaultValues: {
       description: "",
       title: "",
-      price: 0.0,
+      price: "",
     },
   });
 
   async function handleSubmit(data: z.infer<typeof createPostFormSchema>) {
-    console.log("Form Sent!");
     if (!session.user) {
       console.error("Not logged in");
       return;
@@ -79,6 +78,7 @@ export default function CreatePostForm() {
                         {...field}
                         placeholder="ex. Old Baseball Glove"
                         type="text"
+                        className="text-black"
                       />
                     </FormControl>
                   </FormItem>
@@ -93,7 +93,12 @@ export default function CreatePostForm() {
                   <FormItem>
                     <FormLabel>Price</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="ex. $10.99" type="text" />
+                      <Input
+                        {...field}
+                        placeholder="ex. $10.99"
+                        type="text"
+                        className="text-black"
+                      />
                     </FormControl>
                   </FormItem>
                 </>
@@ -108,7 +113,7 @@ export default function CreatePostForm() {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Textarea
-                        className="h-full"
+                        className="h-full text-black"
                         {...field}
                         placeholder="Product description..."
                       />

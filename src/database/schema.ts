@@ -25,7 +25,7 @@ export const ItemListing = pgTable("item_listing", {
 export const Image = pgTable("image", {
   id: serial("image_id").primaryKey(),
   href: text("image_href").notNull(),
-  listing_id: serial("listing_id")
+  listingId: serial("listing_id")
     .notNull()
     .references(() => ItemListing.id),
 });
